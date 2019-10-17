@@ -25,7 +25,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   throw in some warhammer and perhaps music as well for
   good measure.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://phughk.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: phkaznowski
 github_username:  phughk
 
@@ -33,6 +33,7 @@ github_username:  phughk
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 
 # Exclude from processing.
 # The following items will not be processed, by default.
