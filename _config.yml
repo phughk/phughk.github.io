@@ -29,6 +29,8 @@ url: "https://phughk.github.io" # the base hostname & protocol for your site, e.
 twitter_username: phkaznowski
 github_username:  phughk
 
+google_analytics: UA-150374384-1
+
 # Build settings
 theme: minima
 plugins:
