@@ -3,6 +3,7 @@ layout: post
 title:  "Created Blog / How to setup github pages"
 date:   2019-10-17 21:33:29 +0100
 categories: jekyll update
+comments: true
 ---
 
 Decided to create a blog where I would throw some random ideas together about things that excite me about tech.
