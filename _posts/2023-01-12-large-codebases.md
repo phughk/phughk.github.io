@@ -52,8 +52,19 @@ Here are a list of tools that I use probably in equal measure
 - Pen and paper
 - A note taking app such as [Obsidian](https://obsidian.md)
 - A chart app such as [yEd](https://www.yworks.com/products/yed)
-What I would write in these programs is basically file, function, line, and idea.
+
+What I would write in these programs is basically: file, function, line, and purpose - not all that information is important though.
 These are nothing but bookmarks, so you could equally use some sort of IDE equivalent, but I like having them written down 
+
+## Ideas that didn't make the article
+
+It is important to understand the architecture.
+Maybe this is available online for open source projects, but for in-house projects at your employer there should be diagrams explaining how components fit together (visual or text).
+Reading architecture documents and charts is essential for gethering context on the code you are reading.
+
+Another idea that I wasn't able to fit in conveniently is using error messages as ways of navigating. If you have an error message at hand, that is perfect - grep away.
+If you need to find a place in the code that you don't have an error message at hand for, then see if you can find a sample from logs or bug reports.
+Otherwise you can try to think of unique functions or variables that would be used in the code you are trying to find.
 
 ## Takeaways
 Ultimately, you do not want to read the entire codebase.
@@ -61,4 +72,4 @@ Instead, try to push forward with questions.
 And when you are stuck - think to yourself, what questions you can ask to push things forward.
 Think of what you don't know about the codebase, in case you are struggling to ask questions.
 There is always something you won't know.
-If you know everything then you have absorbed the codebase, and it is now ready for the next change :wink: .
+If you know everything then you have absorbed the codebase, and it is now ready for the next change :wink:.
