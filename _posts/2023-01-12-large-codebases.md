@@ -66,6 +66,12 @@ Another idea that I wasn't able to fit in conveniently is using error messages a
 If you need to find a place in the code that you don't have an error message at hand for, then see if you can find a sample from logs or bug reports.
 Otherwise you can try to think of unique functions or variables that would be used in the code you are trying to find.
 
+Don't forget to read the tests!
+Tests tend to be written with use cases in mind.
+They should tell you why a part of the code was written and what cases it handles.
+It may be easier to follow than the implementation in some cases.
+They are also easy to artificially break to find where the offending line is.
+
 ## Takeaways
 Ultimately, you do not want to read the entire codebase.
 Instead, try to push forward with questions.
