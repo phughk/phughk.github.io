@@ -35,15 +35,16 @@ Because your data is all in one place, you also gain performance from not coordi
 You save on network hops between clusters, network transport between your application and DB, aggregation and filtering within your application, re-seeking indexes in your secondary-paradigm database, and many other operations.
 
 ## Enter, SurrealDB
-SurrealDB is exciting.
+[SurrealDB](https://surrealdb.com/) is exciting.
 It ties all your paradigms together in an unobtrusive way.
 You can use the database in a way that is convenient to you.
 The query language is very familiar as it resembles SQL.
-The database is written in Rust, so you can compile it to WebAssembly and run it in your browser.
+The database is written in [Rust](https://www.rust-lang.org/), so you can compile it to [WebAssembly](https://webassembly.org/) and run it in your browser.
 And most importantly - it was designed from the ground up to tackle the issue of coordinating many databases.
-A lot of the selling points of SurrealDB are that they know what you will be using it for - Change Data Capture, fast client-side analytics, eventual consistency, geo-location partitioning, and many other goals.
+The scope includes services that handle authentication and authorisation, as security permissions are accessible via queries.
+A lot of the selling points of SurrealDB are that they know what you will be using it for - [Change Data Capture](https://en.wikipedia.org/wiki/Change_data_capture), fast client-side analytics, eventual consistency, geo-location partitioning, and many other goals.
 It is more than a database - it is leaning into the backend as a service territory.
 
 Developers agree - SurrealDB has gained much traction in the community and is the fastest-growing in popularity per GitHub interactions.
-As long as you can get your data quickly and without trouble and are tolerant of failures, the convenience of use is the next thing that matters.
+As long as you can get your data quickly and without trouble and are tolerant of failures, the [convenience of use](https://surrealdb.com/why) is the next thing that matters.
 
