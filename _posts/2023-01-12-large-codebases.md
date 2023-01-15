@@ -39,7 +39,7 @@ You can now focus on the exploration and you have the following resources at you
 1. **README** - this should absolutely be your go-to. Perhaps the code you are looking at cannot be answered in this codebase. The README will include essential information.
 1. **Parent files** - the main files tend to be near the top of the project hierarchy. They are worth having a quick glance over to understand, just to see what the top level looks like. Feel free to not put too much effort into that, there are more effective ways of navigating.
 1. **Project structure** - most projects have complex structures, where modules (directories) are separated based on the application architecture and responsibilities. You can use this information both to find your relevant code, and also to understand how the software fits together.
-1. **Grep** - do not underestimate standard search. There are many tools out there that deliberately aim to make this easier - it is a very effective method of finding relevant code.
+1. **Grep** - do not underestimate standard search. There are many [tools]({{ site.baseurl }}{% post_url 2023-01-14-local-sourcegraph %}) out there that deliberately aim to make this easier - it is a very effective method of finding relevant code.
 1. **Tracing** - you can follow the breadcrumbs of invocations from the entry point of a program until you find the functions that are relevant. This is time consuming and error prone, but a good way to first learn a codebase if you have the time. Using a debugger is also a viable approach.
 
 ## Managing knowledge
