@@ -6,7 +6,7 @@ comments: true
 ---
 
 Everyone wants perfectly synchronised data available all over the planet.
-These properties are possible but slow - ensuring that the data is dispersed worldwide.
+These properties are possible but slow by ensuring that the data is dispersed worldwide.
 Making that consistent requires coordination.
 
 ## Coordination
