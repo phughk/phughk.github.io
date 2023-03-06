@@ -21,7 +21,7 @@ Typically you would want the SurrealDB instances not tied to individual TiKV ins
 
 Because we need access to 6 machines, we will simplify this setup using LXC - a lightweight Linux container system that makes nodes seem like fully-fledged computers.
 
-*An important note*: LXC does not play nice with docker.
+**An important note**: LXC does not play nice with docker.
 There are ways around that, but I removed docker from my host machine for this example.
 It's a VM; usually, you wouldn't host this environment this way anyway.
 
