@@ -50,14 +50,14 @@ Click `Add code host`.
 
 We now need to add the link to the `src serve-git` command, but this is on a different machine (host) as opposed to sourcegraph (docker).
 That means localhost won't work.
-We can instead use the hosts IP address, which for me is `192.168.1.3`.
+Fortunately we can use a hostname available within docker containers to connect to the host - `host.docker.internal`
 My "add repository" entry looks like the following
 
 ```json
 {
   // url is the http url to 'src serve-git'.
   // url should be reachable by Sourcegraph.
-  "url": "http://192.168.1.3:3434",
+  "url": "http://host.docker.internal:3434",
 
   // Do not change this. Sourcegraph uses this as a signal that url is 'src serve'.
   "repos": ["src-serve"]
