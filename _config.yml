@@ -30,6 +30,15 @@ twitter_username: phkaznowski
 github_username:  phughk
 dzone_username: phkaznowski
 
+minima:
+  social_links:
+    github: phughk
+    twitter: phkaznowski
+    mastodon:
+      - username: phkaznowski
+        instance: mastodon.online
+    flickr: phughk
+
 
 google_analytics: UA-150374384-1
 
@@ -39,6 +48,7 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jemoji
+  - jekyll-seo-tag
 
 # Exclude from processing.
 # The following items will not be processed, by default.

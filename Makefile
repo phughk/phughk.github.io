@@ -7,3 +7,6 @@ clean:
 
 serve:
 	bundle exec jekyll serve
+
+debug:
+	bundle exec jekyll serve --trace --verbose
