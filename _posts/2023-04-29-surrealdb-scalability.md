@@ -28,8 +28,8 @@ Similarly, if you would like to process many thousands of queries a second but o
 The scalable storage layer we are targeting is TiKV from Pingcap.
 Deploying a TiKV cluster involves deploying two types of services: TiKV instances and PD instances.
 TiKV nodes are the primary service that holds the data.
-The TiKV node holds its data in RocksDB, so we have predictable performance equivalence compared to single-node instances.
-Aside from TiKV instances, there are also Placement Drivers called PD.
+The TiKV node records its data in RocksDB, so we have predictable performance equivalence compared to single-node instances.
+Aside from TiKV instances, there are also instances called Placement Drivers (PD).
 PD services track where data is in your TiKV cluster.
 So the SurrealDB compute engine will connect to a PD instance, request access to specific keys and ranges, and the placement driver will redirect the requests to the correct TiKV instances.
 
@@ -41,7 +41,7 @@ Scaling is as simple as deploying or destroying SurrealDB instances without need
 ## Yes, but is it webscale?
 With the rise of Big Data, scalability has become a hot topic.
 
-![Frame from youtube video is mongodb webscale](/assets/screenshots/mongodb-webscale.png "Frame from youtube video is mongodb webscale")
+![Frame from youtube video is MongoDB webscale](/assets/screenshots/mongodb-webscale.png "Frame from youtube video is MongoDB webscale")
 
 It is a complex and interesting problem!
 
@@ -70,9 +70,9 @@ Instead, users should offload this computation into a separate table.
 Offloading to a secondary table is very similar to what a secondary index does.
 
 A secondary index is just a mapping of index constraints to a primary key entry.
-The reason it is called a secondary index, is because the primary index is the storage of your table data by primary key (the document ID).
+We call this concept a secondary index because the primary index stores your table data by the primary key (the document ID).
 There is no difference between the term "secondary index" and "index".
-Still, using a secondary table is more flexible as it can include only the necessary information (reducing the amount of data being read or garbage collected), or including information that is not available in the primary data (such as information already retrieved from joins).
+Still, using a secondary table is more flexible as it can include only the necessary information (reducing the amount of data being read or garbage collected) or include information not available in the primary data (such as information already retrieved from joins).
 
 ![Primary index, secondary index, secondary table](/assets/diagrams/primary-index-secondary.svg "Primary index, secondary index, secondary table")
 
@@ -81,15 +81,15 @@ A query planner is a piece of code in the database that will look at a user quer
 As of this writing, SurrealDB does not have a query planner in 1.0.0-beta-10.
 A query planner can pick indexes, simplify predicates (ex "... WHERE colour="red" can be removed if there are no red colours), or re-order operations.
 
-This is a very useful feature to have when you don't want to think about indexes.
-Fortunately, SurrealDB provides complex IDs - this means that you can already mimic indexes in an accesible way.
+A query planner is handy when you don't want to consider indexes.
+Fortunately, SurrealDB provides complex IDs - you can already mimic indexes in an accessible way.
 
-This does not seem like a big deal, but actually it is a fantastic way of getting predictable performance from queries if you have a very deliberate access pattern in mind.
+Complex IDs do not seem like a big deal, but they are a fantastic way of getting predictable performance from queries if you have a deliberate access pattern in mind.
 Often, slowdowns can be attributed to a query planner making an incorrect decision.
 
-For example if the query planner estimates that there are many entries matching a predicate (colour = Red), then it may choose to use a full table scan instead of an index.
+For example, if the query planner estimates that many entries match a predicate (colour = Red), it may use a full table scan instead of an index.
 Then you would have to tinker and reason about how to resolve this.
-In SurrealQL you can actually enforce this and achieve predictable performance.
+In SurrealQL, you can enforce this and achieve predictable performance.
 
 ```
 ➜  ~ surreal sql --conn memory --ns test --db test
@@ -106,59 +106,60 @@ test/test> select * from user_colour:['Red', NONE]..
 ```
 
 As with any database, using indexes introduces a tradeoff.
-You are choosing to increase the create and update latency to improve read speed in other queries.
+You are increasing the Create and Update latency to improve read speed in other queries.
 A benefit of having secondary tables is that you can delay that computation or batch the updates to it.
 
 # Data locality
 When users want data locality, they tend to have one of two things in mind: region affinity or edge storage.
 
-Region affinity is when data that tends to be accessed in a specific region is stored in that region.
-For example you would want to store your European users in your European region.
-This is possible in SurrealDB with TiKV.
+We want to store data in a region where users will likely access it.
+We call this region affinity.
+For example, you would like to keep your European users in your European region.
+Region affinity is possible in SurrealDB with TiKV.
 Even though TiKV balances partitions automatically, it will be possible with SurrealDB Cloud to allocate partitions to preferred regions.
 
 ![Region Affinity](/assets/diagrams/Region-Affinity.svg "Region Affinity")
 
 Edge storage is slightly different.
-The idea behind edge storage is that instead of storing data in a data centre, you store it locally on the client.
-This is quite problematic, because it means that this data is far away from the rest of your data.
-That means it would introduce a lot of latency and dependency on it being available, in an ACID OLTP system.
-Due to the way SurrealDB works for 1.0, edge storage is not possible currently.
+The idea behind edge storage is to hold data locally on the client instead of in a data centre.
+Edge is problematic because it means this data is far from the rest of your data centre.
+That means it would introduce a lot of latency and dependency on its availability in an ACID OLTP system.
+Due to the way SurrealDB works for 1.0, edge storage is currently unsupported.
 
 ![Edge](/assets/diagrams/Edge.svg "Edge")
 
 # Fault tolerance
 When a system is fault-tolerant, it can handle network failures, hard drive failures, client failures, internal errors, etc.
-Any failure can be handled except Byzantine failures when a cluster member provides false information.
+Any failure can be handled except Byzantine Failures when a cluster member provides false information.
 
 The multi-raft consensus algorithm in TiKV provides distributed fault tolerance.
-This algorithm means that to tolerate n failures (where n can be a computer failure, a rack failure, a network failure, or data centre/region failure), you need 2n+1 copies of it.
+This algorithm means that to tolerate n failures (where n can be a computer, rack, network, or data centre/region failure), you need 2n+1 copies of it.
 
-For example, to tolerate two datacentres going down, you need to be deployed in 2n+1 = 2 * (2 datacentres) +1 = 5 datacentres.
+For example, to tolerate two datacentres going down, you must be deployed in `2n + 1 = 2 * (2 datacentres) + 1 = 5` datacentres.
 
-Single node fault tolerance (such as power going out, or transactions being terminated mid-way) is handled with the write-ahead log.
-The idea is that when we commit a transaction, RocksDB first writes to the write-ahead log file before a response is sent back to the client confirming it was successful.
-This means that if something fails, it can be replayed by reading the latest correct snapshot of the database memory, and applying un-flushed transactions from the write-ahead log.
+Single-node fault tolerance (such as power going out, or transactions being terminated mid-way) is handled with the write-ahead log.
+The idea is that when we commit a transaction, RocksDB first writes to the write-ahead log file before a response is sent back to the client, confirming it was successful.
+If something fails, it can be replayed by reading the latest correct snapshot of the database memory and applying un-flushed transactions from the write-ahead log.
 
 ## Conclusion
 As you can see, SurrealDB is already performant and ready for production usage.
 We intend to improve all the functionality, but the capabilities are already available today.
 Explaining the details behind this will reassure you that it is a viable system for production usage.
-If you still have reservations about scalability or reliability, we would love to hear from you!
+We would love to hear from you if you still have reservations about scalability or reliability!
 
 ## Massive thank you to the Discord community
 We decide what we need to focus on based on user feedback.
-This post is largely driven by users sharing their concerns and experience using the database.
-We would like to give a massive thank you to these people for sharing their perspectives!
+This post is primarily driven by users sharing their concerns and experience using the database.
+We want to give a massive thank you to these people for sharing their perspectives!
 
 - amaster507#1406
 - nerdo#4825
 - emmagamma#5637
 - BitShift#1597
 
-The list is incomplete, as many others have also contributed - we are grateful to you as well even if you missed the above list!
+The list is incomplete, as many others have also contributed - we are grateful to you even if you missed the above list!
 
-We are aware that there are many members who only engage a little in the community as well - this is evident from the surveys we do.
-We would really appreciate to hear your voices!
+We are aware that many members only engage a little in the community as well - this is evident from our surveys.
+We would appreciate hearing your voices!
 
 You can join the Community Discord [here](https://discord.gg/surrealdb).
