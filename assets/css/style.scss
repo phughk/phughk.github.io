@@ -65,6 +65,25 @@ img {
     margin-right: auto;
   }
 
+.img-float-right {
+    float: right;
+    margin-left: 1em;
+    margin-bottom: 1em;
+}
+
+.img-full-width {
+    width: 100%;
+    height: auto;
+  }
+
+  .emoji {
+    display: inline;
+    margin: 0;
+    vertical-align: middle;
+  }
+
+
+
 svg {
     fill: #f5f5f5;
 }
