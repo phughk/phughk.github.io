@@ -22,6 +22,7 @@ We don't want to force this decision on users - you can always opt out of modula
 But by having storage and compute scale independently, you are moving closer to the "pay for what you use" paradigm.
 We want to save you unnecessary queries if you have 5 petabytes of storage but only a single query per minute.
 Similarly, if you would like to process many thousands of queries a second but only have a gigabyte of data: you could then scale the compute layer while keeping the storage layer relatively small.
+
 ![Diagram of layers in a SurrealDB clustered deployment](/assets/diagrams/surrealdb-layer-scaling.svg "Diagram of layers in a SurrealDB clustered deployment")
 
 ## How does the storage layer scale
@@ -41,7 +42,9 @@ Scaling is as simple as deploying or destroying SurrealDB instances without need
 ## Yes, but is it webscale?
 With the rise of Big Data, scalability has become a hot topic.
 
-![Frame from youtube video is MongoDB webscale](/assets/screenshots/mongodb-webscale.png "Frame from youtube video is MongoDB webscale")
+<div class="embed-responsive">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/b2F-DItXtZs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 It is a complex and interesting problem!
 
