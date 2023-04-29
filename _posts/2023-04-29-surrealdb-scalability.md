@@ -106,11 +106,8 @@ test/test> select * from user_colour:['Red', NONE]..
 ```
 
 As with any database, using indexes introduces a tradeoff.
-You are increasing the create and update duration to improve read speed.
- 
-Query planner vs manually using secondary indexes (including complex indexes)
-Using indexes - memory time tradeoff, write-read tradeoff
-
+You are choosing to increase the create and update latency to improve read speed in other queries.
+A benefit of having secondary tables is that you can delay that computation or batch the updates to it.
 
 # Data locality
 When users want data locality, they tend to have one of two things in mind: region affinity or edge storage.
@@ -133,9 +130,12 @@ Due to the way SurrealDB works for 1.0, edge storage is not possible currently.
 # Fault tolerance
 When a system is fault-tolerant, it can handle network failures, hard drive failures, client failures, internal errors, etc.
 Any failure can be handled except Byzantine failures when a cluster member provides false information.
+
 The multi-raft consensus algorithm in TiKV provides distributed fault tolerance.
 This algorithm means that to tolerate n failures (where n can be a computer failure, a rack failure, a network failure, or data centre/region failure), you need 2n+1 copies of it.
+
 For example, to tolerate two datacentres going down, you need to be deployed in 2n+1 = 2 * (2 datacentres) +1 = 5 datacentres.
+
 Single node fault tolerance (such as power going out, or transactions being terminated mid-way) is handled with the write-ahead log.
 The idea is that when we commit a transaction, RocksDB first writes to the write-ahead log file before a response is sent back to the client confirming it was successful.
 This means that if something fails, it can be replayed by reading the latest correct snapshot of the database memory, and applying un-flushed transactions from the write-ahead log.
@@ -144,9 +144,6 @@ This means that if something fails, it can be replayed by reading the latest cor
 As you can see, SurrealDB is already performant and ready for production usage.
 We intend to improve all the functionality, but the capabilities are already available today.
 Explaining the details behind this will reassure you that it is a viable system for production usage.
-A thorny issue that gets brought up is schema migration.
-While SurrealDB can operate in both schemaless, mixed, and schemafull modes, maintaining and reproducing the schemas is a tricky problem.
-We have plans to solve this in the future, but until then there are many tools and ideas from the community - some of which can be found in our "awesome" repository.
 If you still have reservations about scalability or reliability, we would love to hear from you!
 
 ## Massive thank you to the Discord community
@@ -159,7 +156,9 @@ We would like to give a massive thank you to these people for sharing their pers
 - emmagamma#5637
 - BitShift#1597
 
-The list is incomplete, as many others have also contributed- thank you!
+The list is incomplete, as many others have also contributed - we are grateful to you as well even if you missed the above list!
 
 We are aware that there are many members who only engage a little in the community as well - this is evident from the surveys we do.
 We would really appreciate to hear your voices!
+
+You can join the Community Discord [here](https://discord.gg/surrealdb).
