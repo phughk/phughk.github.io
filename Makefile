@@ -10,3 +10,6 @@ serve:
 
 debug:
 	bundle exec jekyll serve --trace --verbose
+
+locate-theme:
+	bundle show minima
