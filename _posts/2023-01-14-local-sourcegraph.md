@@ -3,6 +3,7 @@ layout: post
 title: Launching sourcegraph locally
 date: 2023-01-14 20:25:57+0100
 comments: true
+tags: [software]
 ---
 
 I love sourcegraph as a product.

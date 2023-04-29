@@ -3,6 +3,7 @@ layout: post
 title: Atomic Broadcast Vs Consensus Algorithms
 date: 2019-10-19 10:02:24+0100
 comments: true
+tags: [theory, distributedsystems]
 ---
 
 When distributed systems need to agree that something was recorded, designers can turn to using a consensus algorithm or using atomic broadcast.

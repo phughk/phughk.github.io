@@ -3,6 +3,7 @@ layout: post
 title: Chopin - Waltz op64 no2
 date: 2019-11-05 20:56:36+0100
 comments: true
+tags: [music]
 ---
 
 I promised to throw some music on here, so here is me plonking out some Chopin.

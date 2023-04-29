@@ -3,6 +3,7 @@ layout: post
 title: Battlescribe Warhammer 40k Profile Types
 date: 2019-10-20 07:53:27+0100
 comments: true
+tags: [warhammer, java]
 ---
 
 Warhammer 40k is a tabletop game set in a dystopian future.

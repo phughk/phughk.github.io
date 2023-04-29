@@ -3,6 +3,7 @@ layout: post
 title: Stellar Consensus Protocol - Problems Solved and TL;DR
 date: 2019-10-21 19:04:47+0100
 comments: true
+tags: [distributedsystems, theory]
 ---
 
 This entire blog post is based on a recording I saw of a talk by [Tess Rinearson](https://twitter.com/_tessr).

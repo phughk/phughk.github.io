@@ -3,6 +3,7 @@ layout: post
 title: SurrealDB TiKV Cluster with LXC
 date: 2023-03-04 17:37:29+0100
 comments: true
+tags: [surrealdb, distributedsystems, database]
 ---
 
 In this post, I will show you how to set up a distributed SurrealDB cluster that shares a distributed TiKV cluster.

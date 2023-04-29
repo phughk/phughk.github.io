@@ -3,6 +3,7 @@ layout: post
 title: Perfect multi region raft
 date: 2023-01-15 14:34:39+0100
 comments: true
+tags: [distributedsystems, theory, ramblings, database]
 ---
 
 Everyone wants perfectly synchronised data available all over the planet.

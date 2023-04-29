@@ -3,7 +3,7 @@ layout: post
 title: SurrealDB Scalability
 date: 2023-04-29 13:09:55+0100
 comments: true
-tags: [surrealdb, distributedsystems]
+tags: [surrealdb, distributedsystems, database]
 ---
 
 ## What is SurrealDB, technically

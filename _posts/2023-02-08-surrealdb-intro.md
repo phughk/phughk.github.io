@@ -3,6 +3,7 @@ layout: post
 title: Introduction to SurrealDB
 date: 2023-02-08 15:18:42+0100
 comments: true
+tags: [surrealdb, software, database]
 ---
 
 Read the original article on the [SurrealDB Blog](https://surrealdb.com/blog/a-quick-introduction-to-surrealdb).

@@ -3,6 +3,7 @@ layout: post
 title: (WIP) Introduction to Control Theory
 date: 2020-08-23 12:34:50+0100
 comments: true
+tags: [theory, distributedsystems]
 ---
 
 This post is a summary of the paper titled [Introduction to Control Theory And Its Application to Computing Systems](https://www.eecs.umich.edu/courses/eecs571/reading/control-to-computer-zaher.pdf).

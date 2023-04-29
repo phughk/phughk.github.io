@@ -3,6 +3,7 @@ layout: post
 title: Debussy - La fille aux cheveux de lin
 date: 2020-05-07 17:22:47+0100
 comments: true
+tags: [music]
 ---
 
 I haven't posted in a while, but wanted to record some progress on 

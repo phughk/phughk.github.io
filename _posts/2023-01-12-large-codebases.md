@@ -3,6 +3,7 @@ layout: post
 title: Navigating and learning codebases
 date: 2023-01-12 22:57:13+0100
 comments: true
+tags: [software, ramblings]
 ---
 
 Wouldn't it be amazing if we could just absorb entire codebases in one sitting?

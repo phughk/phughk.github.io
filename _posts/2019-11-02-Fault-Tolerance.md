@@ -3,6 +3,7 @@ layout: post
 title: Fault Tolerance 
 date: 2019-11-02 16:47:29+0100
 comments: true
+tags: [distributedsystems, theory]
 ---
 
 ### Tolerating failures

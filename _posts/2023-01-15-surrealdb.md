@@ -3,6 +3,7 @@ layout: post
 title: Why SurrealDB
 date: 2023-01-15 18:49:53+0100
 comments: true
+tags: [surrealdb, ramblings, database]
 ---
 
 Disclosure: These are my own thoughts, and don't reflect my employer. They are also written in gist and aren't a full or accurate depiction of reality.

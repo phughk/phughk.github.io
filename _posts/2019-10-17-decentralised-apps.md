@@ -4,6 +4,7 @@ title:  "How would decentralised applications (dApps) work?"
 date:   2019-10-17 22:21:00 +0100
 categories: jekyll update
 comments: true
+tags: [ramblings]
 ---
 
 I have been trying to understand more about Web3 and how the decentralised internet would work.
