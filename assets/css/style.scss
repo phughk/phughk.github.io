@@ -111,8 +111,20 @@ svg {
     padding-left: 20px; /* add some padding to the left of the tag to create some space for the icon */
 }
 
-  .tag-distributedsystems{
+.tag-distributedsystems{
     background: url('/assets/icons/distributedsystems.svg') no-repeat left center;
+    background-size: contain; /* scale the icon to fit within the tag link */
+    padding-left: 20px; /* add some padding to the left of the tag to create some space for the icon */
+}
+
+.tag-music{
+    background: url('/assets/icons/music.svg') no-repeat left center;
+    background-size: contain; /* scale the icon to fit within the tag link */
+    padding-left: 20px; /* add some padding to the left of the tag to create some space for the icon */
+}
+
+.tag-theory{
+    background: url('/assets/icons/theory.svg') no-repeat left center;
     background-size: contain; /* scale the icon to fit within the tag link */
     padding-left: 20px; /* add some padding to the left of the tag to create some space for the icon */
 }
