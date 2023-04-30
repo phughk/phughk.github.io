@@ -5,7 +5,8 @@ permalink: /about/
 ---
 
 ![Profile](/assets/images/profile.jpg "Profile"){: .img-float-right}
-Hi there! {% gif hello_there.gif %}
+Hi there! 
+{% include gif.html name='hello_there.gif' %}
 
 I'm an experienced senior software engineer with a diverse background in investment banking, commercial banking, and databases.
 I'm currently working at SurrealDB, where I focus on optimizing database performance for large-scale applications.
