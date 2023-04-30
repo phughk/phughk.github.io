@@ -45,11 +45,13 @@ google_analytics: UA-150374384-1
 
 # Build settings
 theme: minima
+plugins_dir: _plugins
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jemoji
   - jekyll-seo-tag
+  - gif
 
 # Exclude from processing.
 # The following items will not be processed, by default.
