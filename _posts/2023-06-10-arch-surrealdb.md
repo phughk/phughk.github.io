@@ -9,6 +9,7 @@ Community arch user
 
 Show error they were getting.
 Describe how I understood what was going on - point to Rushmore's thread that I found via Discord search.
+https://discord.com/channels/902568124350599239/1047608812208668782/1047619270235926548
 
 The issue is with building surrealdb locally, as the user wants to use a nightly build as a dependency, and so they need to build as they are linking to git instead of dist repo.
 
@@ -176,4 +177,52 @@ make static_lib
 ```
 
 Wut. It works.
+
+Go back to Rushmore dependencies.
+Paste apt-get directly into pacman to find differences
+```
+[root@helped-zebra api]# pacman -Sy \
+>         curl \
+        llvm \
+        cmake \
+        binutils \
+        clang-11 \
+        qemu-user \
+        musl-tools \
+        libssl-dev \
+        pkg-config \
+        build-essential
+:: Synchronizing package databases...
+ core                                                                                                                                         132.2 KiB   230 KiB/s 00:01 [#########################################################################################################] 100%
+ extra                                                                                                                                          8.3 MiB  4.03 MiB/s 00:02 [#########################################################################################################] 100%
+warning: curl-8.1.2-1 is up to date -- reinstalling
+warning: binutils-2.40-6 is up to date -- reinstalling
+error: target not found: clang-11
+error: target not found: musl-tools
+error: target not found: libssl-dev
+warning: pkgconf-1.8.1-1 is up to date -- reinstalling
+error: target not found: build-essential
+```
+
+Now figure out replacements from https://archlinux.org/packages
+
+musl-tools
+```
+pacman -Sy musl rust-musl
+```
+
+libssl-dev
+```
+pacman -Sy openssl
+```
+
+Still not solved
+
+```
+[root@helped-zebra api]# rm `which c++`
+[root@helped-zebra api]# cp `which clang++` /usr/sbin/c++
+```
+
+Still same issue.
+
 
