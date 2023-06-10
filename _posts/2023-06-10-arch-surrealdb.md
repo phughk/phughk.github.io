@@ -225,4 +225,41 @@ Still not solved
 
 Still same issue.
 
+Build surrealdb
+```
+git clone https://github.com/surrealdb/surrealdb.git
+cd surrealdb
+make build
+```
 
+Doesnt build
+
+```
+error: failed to run custom build command for `opentelemetry-proto v0.1.0`
+
+Caused by:
+  process didn't exit successfully: `/root/surrealdb/target/release/build/opentelemetry-proto-421821e575ce6505/build-script-build` (exit status: 101)
+  --- stdout
+  cargo:rerun-if-changed=src/proto/opentelemetry-proto/opentelemetry/proto/common/v1/common.proto
+  cargo:rerun-if-changed=src/proto/opentelemetry-proto/opentelemetry/proto/resource/v1/resource.proto
+  cargo:rerun-if-changed=src/proto/opentelemetry-proto/opentelemetry/proto/trace/v1/trace.proto
+  cargo:rerun-if-changed=src/proto/opentelemetry-proto/opentelemetry/proto/trace/v1/trace_config.proto
+  cargo:rerun-if-changed=src/proto/opentelemetry-proto/opentelemetry/proto/collector/trace/v1/trace_service.proto
+  cargo:rerun-if-changed=src/proto/opentelemetry-proto/opentelemetry/proto/metrics/v1/metrics.proto
+  cargo:rerun-if-changed=src/proto/opentelemetry-proto/opentelemetry/proto/collector/metrics/v1/metrics_service.proto
+  cargo:rerun-if-changed=src/proto/opentelemetry-proto/opentelemetry/proto/logs/v1/logs.proto
+  cargo:rerun-if-changed=src/proto/opentelemetry-proto/opentelemetry/proto/collector/logs/v1/logs_service.proto
+  cargo:rerun-if-changed=src/proto/opentelemetry-proto
+
+  --- stderr
+  thread 'main' panicked at 'Could not find `protoc` installation and this build crate cannot proceed without
+      this knowledge. If `protoc` is installed and this crate had trouble finding
+      it, you can set the `PROTOC` environment variable with the specific path to your
+      installed `protoc` binary.If you're on debian, try `apt-get install protobuf-compiler` or download it from https://github.com/protocolbuffers/protobuf/releases
+
+  For more information: https://docs.rs/prost-build/#sourcing-protoc
+  ', /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.11.9/src/lib.rs:1457:10
+  note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+warning: build failed, waiting for other jobs to finish...
+make: *** [Makefile:49: build] Error 101
+```
